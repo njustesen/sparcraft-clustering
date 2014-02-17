@@ -70,6 +70,8 @@ public:
     void            updateState(IUCTNode & node, GameState & state, bool isLeaf);
     void            setMemoryPool(IUCTMemoryPool * pool);
     IUCTSearchResults & getResults();
+	std::vector<UnitAction> scriptsToMove(GameState state, std::vector<UnitAction> & moveVec, std::vector<IDType> scripts);
+	void			fillWithSameScript(std::vector<IDType> & scriptVector, IDType player, IDType & script);
 
     // graph printing functions
     void            printSubTree(IUCTNode & node, GameState state, std::string filename);

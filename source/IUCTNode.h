@@ -19,12 +19,13 @@ class IUCTNode
     IDType                      _nodeType;
     //std::vector<UnitAction>   _move;              // the ove that generated this node
 	std::vector<IDType>			_move;
+	//MoveArray					_possibleMoves;
 
     // holds children
-    std::vector<IUCTNode>        _children;
+    std::vector<IUCTNode>       _children;
 
     // nodes for traversing the tree
-    IUCTNode *                   _parent;
+    IUCTNode *                  _parent;
     
 public:
 
@@ -58,6 +59,7 @@ public:
     const bool      hasChildren()               const           { return numChildren() > 0; }
     const size_t    getNodeType()               const           { return _nodeType; }
     const IDType    getPlayer()                 const           { return _player; }
+	const MoveArray getPossibleMoves()			const			{ return _possibleMoves; }
 
     IUCTNode *       getParent()                 const           { return _parent; }
     IUCTNode &       getChild(const size_t & c)                  { return _children[c]; }
@@ -76,6 +78,11 @@ public:
     void setMove(std::vector<IDType> & move)
     {
         _move = move;
+    }
+
+	void setPossibleMoves(MoveArray moveArr)
+    {
+        _possibleMoves = moveArr;
     }
 
     void addChild(IUCTNode * parent, const IDType player, const IDType nodeType, const std::vector<IDType> & move, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)

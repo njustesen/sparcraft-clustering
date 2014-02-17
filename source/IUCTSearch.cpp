@@ -58,16 +58,18 @@ void IUCTSearch::doSearch(GameState & initialState, std::vector<UnitAction> & mo
     if (_params.rootMoveSelectionMethod() == IUCTMoveSelect::HighestValue)
     {
 		std::vector<IDType> scripts = _rootNode.bestUCTValueChild(true, _params).getMove();
-		GameState copy(initialState);
-		UnitScriptData currentScriptData(originalScriptData);
-		currentScriptData.calculateMoves(player, moves, copy, moveVec);
-        //move = 
     }
     else if (_params.rootMoveSelectionMethod() == IUCTMoveSelect::MostVisited)
     {
-		std::vector<IDType> scripts = _rootNode.mostVisitedChild().getMove();
-        //move = _rootNode.mostVisitedChild().getMove();
+		std::vector<IDType> scripts = _rootNode.mostVisitedChild().getMove();        
     }
+
+	// Convert scripts to move
+	GameState copy(initialState);
+	UnitScriptData scriptData;
+	MoveArray moves;
+	copy.generateMoves(moves, _params.maxChildren);
+	scriptData.calculateMoves(_params.maxChildren, moves, copy, move);
 
     if (_params.graphVizFilename().length() > 0)
     {
@@ -228,14 +230,29 @@ void IUCTSearch::updateState(IUCTNode & node, GameState & state, bool isLeaf)
         if (node.getNodeType() == SearchNodeType::SecondSimNode)
         {
             // make the parent's moves on the state because they haven't been done yet
-            state.makeMoves(node.getParent()->getMove());
+			std::vector<UnitAction> move;
+			scriptsToMove(state, move, node.getParent()->getMove());
+            state.makeMoves(move);
         }
 
         // do the current node moves and call finished moving
-        state.makeMoves(node.getMove());
+        std::vector<UnitAction> move;
+		scriptsToMove(state, move, node.getMove());
+        state.makeMoves(move);
         state.finishedMoving();
     }
 }
+
+std::vector<UnitAction> IUCTSearch::scriptsToMove(GameState state, std::vector<UnitAction> & moveVec, std::vector<IDType> scripts){
+
+	GameState copy(state);
+	UnitScriptData scriptData;
+	MoveArray moves;
+	copy.generateMoves(moves, _params.maxChildren);
+	scriptData.calculateMoves(_params.maxChildren, moves, copy, moveVec);
+
+}
+	
 
 StateEvalScore IUCTSearch::traverse(IUCTNode & node, GameState & currentState)
 {
@@ -300,19 +317,36 @@ void IUCTSearch::generateChildren(IUCTNode & node, GameState & state)
     const IDType playerToMove(getPlayerToMove(node, state));
 
     // generate all the moves possible from this state
-	state.generateMoves(_moveArray, playerToMove);
-    _moveArray.shuffleMoveActions();
+	
 
-    // generate the 'ordered moves' for move ordering
-    generateOrderedMoves(state, _moveArray, playerToMove);
+	//if (node.getPossibleMoves() == NULL){
+		MoveArray moveArr;
+		state.generateMoves(moveArr, playerToMove);
+		moveArr.shuffleMoveActions();
+		//node.setPossibleMoves(moveArr);
+	//}
+	std::vector<IDType> nokps;
+	fillWithSameScript(nokps, playerToMove, PlayerModels::NOKDPS);
+	IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), nokps, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
+	
+	std::vector<IDType> kiter;
+	fillWithSameScript(kiter, playerToMove, PlayerModels::KiterDPS);
+	IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), kiter, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
+
 
     // for each child of this state, add a child to the current node
-    for (size_t child(0); (child < _params.maxChildren()) && getNextMove(playerToMove, _moveArray, child, _actionVec); ++child)
+    for (size_t child(0); (child < _params.maxChildren() -2); ++child)
     {
         // add the child to the tree
         node.addChild(&node, playerToMove, getChildNodeType(node, state), _actionVec, _params.maxChildren(), _memoryPool ? _memoryPool->alloc() : NULL);
         _results.nodesCreated++;
     }
+}
+
+void IUCTSearch::fillWithSameScript(std::vector<IDType> & scriptVector, IDType player, IDType & script){
+
+
+
 }
 
 StateEvalScore IUCTSearch::performPlayout(GameState & state)
@@ -340,6 +374,7 @@ void IUCTSearch::printSubTree(IUCTNode & node, GameState s, std::string filename
     G.print(out);
 }
 
+/*
 void IUCTSearch::printSubTreeGraphViz(IUCTNode & node, GraphViz::Graph & g, GameState state)
 {
     if (node.getNodeType() == SearchNodeType::FirstSimNode && node.hasChildren())
@@ -421,6 +456,7 @@ void IUCTSearch::printSubTreeGraphViz(IUCTNode & node, GraphViz::Graph & g, Game
         }
     }
 }
+*/
  
 std::string IUCTSearch::getNodeIDString(IUCTNode & node)
 {

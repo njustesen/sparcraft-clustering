@@ -135,6 +135,7 @@
     <ClInclude Include="..\source\IUCTSearch.h" />
     <ClInclude Include="..\source\IUCTSearchParameters.hpp" />
     <ClInclude Include="..\source\IUCTSearchResults.hpp" />
+    <ClInclude Include="..\source\IUCTUnitScriptData.h" />
     <ClInclude Include="..\source\Map.hpp" />
     <ClInclude Include="..\source\MoveArray.h" />
     <ClInclude Include="..\source\Player.h" />
@@ -183,6 +184,7 @@
     <ClCompile Include="..\source\glfont\glfont.cc" />
     <ClCompile Include="..\source\Hash.cpp" />
     <ClCompile Include="..\source\IUCTSearch.cpp" />
+    <ClCompile Include="..\source\IUCTUnitScriptData.cpp" />
     <ClCompile Include="..\source\MoveArray.cpp" />
     <ClCompile Include="..\source\Player.cpp" />
     <ClCompile Include="..\source\PlayerProperties.cpp" />

@@ -121,7 +121,7 @@ public:
         setData(Kiter_NOKDPS,           "Kiter_NOKDPS");
         setData(Cluster,                "Cluster");
         setData(PortfolioGreedySearch,  "PortfolioGreedySearch");
-        //setData(UCT,                    "UCT");
+        setData(UCT,                    "UCT");
 		setData(IUCT,                   "IUCT");
 		setData(None,                   "None");
     }

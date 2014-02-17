@@ -1,9 +1,149 @@
-﻿Build started 2/16/2014 17:20:06.
-     1>Project "C:\Users\Niels\Documents\sparcraft\SparCraft\VisualStudio\SparCraft.vcxproj" on node 2 (Build target(s)).
-     1>Lib:
-         SparCraft.vcxproj -> C:\Users\Niels\Documents\sparcraft\SparCraft\VisualStudio\Release\SparCraft.lib
-     1>Done Building Project "C:\Users\Niels\Documents\sparcraft\SparCraft\VisualStudio\SparCraft.vcxproj" (Build target(s)).
+﻿Build started 2/16/2014 19:12:34.
+     1>Project "C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Niels\Documents\sparcraft\boost_1_55_0 /IC:\Users\Niels\Documents\sparcraft\bwapidata /IC:\Users\Niels\Documents\sparcraft\bwapidata\include /I"C:\Users\Niels\Documents\sparcraft\SDL-1.2.15\include" /IC:\Users\Niels\Documents\sparcraft\SDL_image /I"C:\Users\Niels\Documents\sparcraft\SDL_gfx-2.0.25" /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\glfont\glfont.cc ..\source\Hash.cpp ..\source\IUCTSearch.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_IUCT.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\WeaponProperties.cpp
+         AllPlayers.cpp
+         AlphaBetaSearch.cpp
+         AnimationFrameData.cpp
+         Common.cpp
+         Display.cpp
+         EnumData.cpp
+         Game.cpp
+         GameState.cpp
+         glfont.cc
+         Hash.cpp
+         IUCTSearch.cpp
+     1>..\source\IUCTSearch.cpp(62): error C2065: 'originalScriptData' : undeclared identifier
+     1>..\source\IUCTSearch.cpp(63): error C2065: 'player' : undeclared identifier
+     1>..\source\IUCTSearch.cpp(63): error C2065: 'moves' : undeclared identifier
+     1>..\source\IUCTSearch.cpp(63): error C2065: 'moveVec' : undeclared identifier
+     1>..\source\IUCTSearch.cpp(231): error C2664: 'SparCraft::GameState::makeMoves' : cannot convert parameter 1 from 'const std::vector<_Ty>' to 'const std::vector<_Ty> &'
+                 with
+                 [
+                     _Ty=IDType
+                 ]
+                 and
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 Reason: cannot convert from 'const std::vector<_Ty>' to 'const std::vector<_Ty>'
+                 with
+                 [
+                     _Ty=IDType
+                 ]
+                 and
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>..\source\IUCTSearch.cpp(235): error C2664: 'SparCraft::GameState::makeMoves' : cannot convert parameter 1 from 'const std::vector<_Ty>' to 'const std::vector<_Ty> &'
+                 with
+                 [
+                     _Ty=IDType
+                 ]
+                 and
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 Reason: cannot convert from 'const std::vector<_Ty>' to 'const std::vector<_Ty>'
+                 with
+                 [
+                     _Ty=IDType
+                 ]
+                 and
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>..\source\IUCTSearch.cpp(307): error C3861: 'generateOrderedMoves': identifier not found
+     1>..\source\IUCTSearch.cpp(310): error C3861: 'getNextMove': identifier not found
+     1>..\source\IUCTSearch.cpp(313): error C2664: 'SparCraft::IUCTNode::addChild' : cannot convert parameter 4 from 'std::vector<_Ty>' to 'const std::vector<_Ty> &'
+                 with
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 and
+                 [
+                     _Ty=IDType
+                 ]
+                 Reason: cannot convert from 'std::vector<_Ty>' to 'const std::vector<_Ty>'
+                 with
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 and
+                 [
+                     _Ty=IDType
+                 ]
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>..\source\IUCTSearch.cpp(353): error C2664: 'SparCraft::GameState::makeMoves' : cannot convert parameter 1 from 'const std::vector<_Ty>' to 'const std::vector<_Ty> &'
+                 with
+                 [
+                     _Ty=IDType
+                 ]
+                 and
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 Reason: cannot convert from 'const std::vector<_Ty>' to 'const std::vector<_Ty>'
+                 with
+                 [
+                     _Ty=IDType
+                 ]
+                 and
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>..\source\IUCTSearch.cpp(356): error C2664: 'SparCraft::GameState::makeMoves' : cannot convert parameter 1 from 'const std::vector<_Ty>' to 'const std::vector<_Ty> &'
+                 with
+                 [
+                     _Ty=IDType
+                 ]
+                 and
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 Reason: cannot convert from 'const std::vector<_Ty>' to 'const std::vector<_Ty>'
+                 with
+                 [
+                     _Ty=IDType
+                 ]
+                 and
+                 [
+                     _Ty=SparCraft::UnitAction
+                 ]
+                 No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+     1>..\source\IUCTSearch.cpp(365): error C2228: left of '.moveString' must have class/struct/union
+                 type is 'const unsigned char'
+         MoveArray.cpp
+         Player.cpp
+         PlayerProperties.cpp
+         Player_AlphaBeta.cpp
+         Player_AttackClosest.cpp
+         Player_AttackDPS.cpp
+         Player_AttackWeakest.cpp
+         Player_Cluster.cpp
+         Player_IUCT.cpp
+         Compiling...
+         Player_Kiter.cpp
+         Player_KiterDPS.cpp
+         Player_Kiter_NOKDPS.cpp
+         Player_NOKDPS.cpp
+         Player_PortfolioGreedySearch.cpp
+         Player_Random.cpp
+         Player_UCT.cpp
+         PortfolioGreedySearch.cpp
+         SparCraft.cpp
+         Timer.cpp
+         TranspositionTable.cpp
+         UCTSearch.cpp
+         Unit.cpp
+         UnitProperties.cpp
+         UnitScriptData.cpp
+         WeaponProperties.cpp
+     1>Done Building Project "C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.18
+Time Elapsed 00:00:58.10
