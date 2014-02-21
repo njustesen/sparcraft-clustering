@@ -58,20 +58,21 @@ public:
     void            makeMove(IUCTNode & node, GameState & state);
 
     // Utility functions
-	std::vector<UnitAction>   getMoveVec(const IDType & player, const GameState & state, const std::vector<IDType> & playerScripts);
-	const IDType    getPlayerToMove(IUCTNode & node, const GameState & state) const;
-    const size_t    getChildNodeType(IUCTNode & parent, const GameState & prevState) const;
-	const bool      searchTimeOut();
-	const bool      isRoot(IUCTNode & node) const;
-	const bool      terminalState(GameState & state, const size_t & depth) const;
-    const bool      isFirstSimMove(IUCTNode & node, GameState & state);
-    const bool      isSecondSimMove(IUCTNode & node, GameState & state);
-    StateEvalScore  performPlayout(GameState & state);
-    void            updateState(IUCTNode & node, GameState & state, bool isLeaf);
-    void            setMemoryPool(IUCTMemoryPool * pool);
-    IUCTSearchResults & getResults();
-	std::vector<UnitAction> scriptsToMove(GameState state, std::vector<UnitAction> & moveVec, std::vector<IDType> scripts);
-	void			fillWithSameScript(std::vector<IDType> & scriptVector, IDType player, IDType & script);
+	std::vector<UnitAction> getMoveVec(const IDType & player, const GameState & state, const std::vector<IDType> & playerScripts);
+	const IDType			getPlayerToMove(IUCTNode & node, const GameState & state) const;
+    const size_t			getChildNodeType(IUCTNode & parent, const GameState & prevState) const;
+	const bool				searchTimeOut();
+	const bool				isRoot(IUCTNode & node) const;
+	const bool				terminalState(GameState & state, const size_t & depth) const;
+    const bool				isFirstSimMove(IUCTNode & node, GameState & state);
+    const bool				isSecondSimMove(IUCTNode & node, GameState & state);
+    StateEvalScore			performPlayout(GameState & state);
+    void					updateState(IUCTNode & node, GameState & state, bool isLeaf);
+    void					setMemoryPool(IUCTMemoryPool * pool);
+    IUCTSearchResults &		getResults();
+	std::vector<UnitAction> scriptsToMove(GameState state, std::vector<UnitAction> & moveVec, IUCTNode & node);
+    void					setAllScripts(const IDType & player, const GameState & state, UnitScriptData & data, const IDType & script);
+	void					setRandomScripts(const IDType & player, const GameState & state, UnitScriptData & data);
 
     // graph printing functions
     void            printSubTree(IUCTNode & node, GameState state, std::string filename);

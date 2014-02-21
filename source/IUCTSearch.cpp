@@ -31,8 +31,8 @@ void IUCTSearch::doSearch(GameState & initialState, std::vector<UnitAction> & mo
 {
     Timer t;
     t.start();
-	std::vector<IDType> & s = std::vector<IDType>();
-    _rootNode = IUCTNode(NULL, Players::Player_None, SearchNodeType::RootNode, s, _params.maxChildren(), _memoryPool ? _memoryPool->alloc() : NULL);
+	UnitScriptData emptyScriptData;
+    _rootNode = IUCTNode(NULL, Players::Player_None, SearchNodeType::RootNode, emptyScriptData, _params.maxChildren(), _memoryPool ? _memoryPool->alloc() : NULL);
 
     // do the required number of traversals
     for (size_t traversals(0); traversals < _params.maxTraversals(); ++traversals)
@@ -54,22 +54,22 @@ void IUCTSearch::doSearch(GameState & initialState, std::vector<UnitAction> & mo
         //system("\"C:\\Program Files (x86)\\Graphviz2.30\\bin\\dot.exe\" < __uct.txt -Tpng > uct.png");
     }
 
-    // choose the move to return
+    // Get script data
+	UnitScriptData scriptData;
     if (_params.rootMoveSelectionMethod() == IUCTMoveSelect::HighestValue)
     {
-		std::vector<IDType> scripts = _rootNode.bestUCTValueChild(true, _params).getMove();
+		scriptData = _rootNode.bestUCTValueChild(true, _params).getScriptData();
     }
     else if (_params.rootMoveSelectionMethod() == IUCTMoveSelect::MostVisited)
     {
-		std::vector<IDType> scripts = _rootNode.mostVisitedChild().getMove();        
+		scriptData = _rootNode.mostVisitedChild().getScriptData();        
     }
 
-	// Convert scripts to move
+	// Convert scripts to moves
 	GameState copy(initialState);
-	UnitScriptData scriptData;
 	MoveArray moves;
-	copy.generateMoves(moves, _params.maxChildren);
-	scriptData.calculateMoves(_params.maxChildren, moves, copy, move);
+	copy.generateMoves(moves, &_params.maxPlayer);
+	scriptData.calculateMoves(&_params.maxChildren, moves, copy, move);
 
     if (_params.graphVizFilename().length() > 0)
     {
@@ -81,6 +81,7 @@ void IUCTSearch::doSearch(GameState & initialState, std::vector<UnitAction> & mo
     _results.timeElapsed = ms;
     //printf("Search took %lf ms\n", ms);
     //printf("Hello\n");
+
 }
 
 const bool IUCTSearch::searchTimeOut()
@@ -231,25 +232,23 @@ void IUCTSearch::updateState(IUCTNode & node, GameState & state, bool isLeaf)
         {
             // make the parent's moves on the state because they haven't been done yet
 			std::vector<UnitAction> move;
-			scriptsToMove(state, move, node.getParent()->getMove());
+			scriptsToMove(state, move, *node.getParent());
             state.makeMoves(move);
         }
 
         // do the current node moves and call finished moving
         std::vector<UnitAction> move;
-		scriptsToMove(state, move, node.getMove());
+		scriptsToMove(state, move, node);
         state.makeMoves(move);
         state.finishedMoving();
     }
 }
 
-std::vector<UnitAction> IUCTSearch::scriptsToMove(GameState state, std::vector<UnitAction> & moveVec, std::vector<IDType> scripts){
+std::vector<UnitAction> IUCTSearch::scriptsToMove(GameState state, std::vector<UnitAction> & moveVec, IUCTNode & node){
 
 	GameState copy(state);
 	UnitScriptData scriptData;
-	MoveArray moves;
-	copy.generateMoves(moves, _params.maxChildren);
-	scriptData.calculateMoves(_params.maxChildren, moves, copy, moveVec);
+	scriptData.calculateMoves(&_params.maxChildren, node.getMoveArray(), copy, moveVec);
 
 }
 	
@@ -317,36 +316,52 @@ void IUCTSearch::generateChildren(IUCTNode & node, GameState & state)
     const IDType playerToMove(getPlayerToMove(node, state));
 
     // generate all the moves possible from this state
+	MoveArray moveArr;
+	state.generateMoves(moveArr, playerToMove);
+	moveArr.shuffleMoveActions();
+	node.setMoveArray(moveArr);
 	
-
-	//if (node.getPossibleMoves() == NULL){
-		MoveArray moveArr;
-		state.generateMoves(moveArr, playerToMove);
-		moveArr.shuffleMoveActions();
-		//node.setPossibleMoves(moveArr);
-	//}
-	std::vector<IDType> nokps;
-	fillWithSameScript(nokps, playerToMove, PlayerModels::NOKDPS);
-	IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), nokps, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
+	// Add all NOKDPS script vector
+	UnitScriptData nokdpsScriptData;
+	setAllScripts(playerToMove, state, nokdpsScriptData, PlayerModels::NOKDPS);
+	IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), nokdpsScriptData, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
 	
-	std::vector<IDType> kiter;
-	fillWithSameScript(kiter, playerToMove, PlayerModels::KiterDPS);
-	IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), kiter, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
+	// Add all KITER-NOKDPS script vector
+	UnitScriptData kiterScriptData;
+	setAllScripts(playerToMove, state, kiterScriptData, PlayerModels::Kiter_NOKDPS);
+	IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), kiterScriptData, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
 
-
-    // for each child of this state, add a child to the current node
+    // Add random script vectors
     for (size_t child(0); (child < _params.maxChildren() -2); ++child)
     {
+		// Generate random script vector
+		UnitScriptData randomScriptData;
+		setRandomScripts(playerToMove, state, randomScriptData);
+
+		// Continue if script vector already in a child
+
         // add the child to the tree
-        node.addChild(&node, playerToMove, getChildNodeType(node, state), _actionVec, _params.maxChildren(), _memoryPool ? _memoryPool->alloc() : NULL);
+        node.addChild(&node, playerToMove, getChildNodeType(node, state), randomScriptData, _params.maxChildren(), _memoryPool ? _memoryPool->alloc() : NULL);
         _results.nodesCreated++;
     }
 }
 
-void IUCTSearch::fillWithSameScript(std::vector<IDType> & scriptVector, IDType player, IDType & script){
+void IUCTSearch::setRandomScripts(const IDType & player, const GameState & state, UnitScriptData & data){
+    for (size_t unitIndex(0); unitIndex < state.numUnits(player); ++unitIndex)
+    {
+		if (rand() % 10 >= 5){
+			data.setUnitScript(state.getUnit(player, unitIndex), PlayerModels::NOKDPS);
+		} else {
+			data.setUnitScript(state.getUnit(player, unitIndex), PlayerModels::Kiter_NOKDPS);
+		}
+    }
+}
 
-
-
+void  PortfolioGreedySearch::setAllScripts(const IDType & player, const GameState & state, UnitScriptData & data, const IDType & script){
+    for (size_t unitIndex(0); unitIndex < state.numUnits(player); ++unitIndex)
+    {
+        data.setUnitScript(state.getUnit(player, unitIndex), script);
+    }
 }
 
 StateEvalScore IUCTSearch::performPlayout(GameState & state)

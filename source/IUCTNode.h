@@ -2,6 +2,8 @@
 
 #include "Common.h"
 #include "UnitAction.hpp"
+#include "UnitScriptData.h"
+#include "MoveArray.h"
 
 namespace SparCraft
 {
@@ -17,9 +19,8 @@ class IUCTNode
     // game specific variables
     size_t                      _player;            // the player who made a move to generate this node
     IDType                      _nodeType;
-    //std::vector<UnitAction>   _move;              // the ove that generated this node
-	std::vector<IDType>			_move;
-	//MoveArray					_possibleMoves;
+	const UnitScriptData				_scriptData;
+	MoveArray					_moveArray;
 
     // holds children
     std::vector<IUCTNode>       _children;
@@ -40,13 +41,13 @@ public:
 
     }
 
-    IUCTNode (IUCTNode * parent, const IDType player, const IDType nodeType, const std::vector<IDType> & move, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
+	IUCTNode (IUCTNode * parent, const IDType player, const IDType nodeType, const UnitScriptData & scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
         : _numVisits            (0)
         , _numWins              (0)
         , _uctVal               (0)
         , _player               (player)
         , _nodeType             (nodeType)
-        , _move                 (move)
+        , _scriptData           (scriptData)
         , _parent               (parent)
     {
         _children.reserve(maxChildren);
@@ -59,7 +60,9 @@ public:
     const bool      hasChildren()               const           { return numChildren() > 0; }
     const size_t    getNodeType()               const           { return _nodeType; }
     const IDType    getPlayer()                 const           { return _player; }
-	const MoveArray getPossibleMoves()			const			{ return _possibleMoves; }
+	
+	MoveArray getMoveArray()					const           { return _moveArray; }
+	const UnitScriptData getScriptData()		const			{ return _scriptData; }
 
     IUCTNode *       getParent()                 const           { return _parent; }
     IUCTNode &       getChild(const size_t & c)                  { return _children[c]; }
@@ -70,24 +73,13 @@ public:
 
     std::vector<IUCTNode> & getChildren()                        { return _children; }
 
-    const std::vector<IDType> & getMove() const
-    {
-        return _move;
-    }
+	void setMoveArray(MoveArray moveArray){
+		_moveArray = moveArray;
+	}
 
-    void setMove(std::vector<IDType> & move)
+    void addChild(IUCTNode * parent, const IDType player, const IDType nodeType, const UnitScriptData & scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
     {
-        _move = move;
-    }
-
-	void setPossibleMoves(MoveArray moveArr)
-    {
-        _possibleMoves = moveArr;
-    }
-
-    void addChild(IUCTNode * parent, const IDType player, const IDType nodeType, const std::vector<IDType> & move, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
-    {
-        _children.push_back(IUCTNode(parent, player, nodeType, move, maxChildren));
+        _children.push_back(IUCTNode(parent, player, nodeType, scriptData, maxChildren));
     }
 
     IUCTNode & mostVisitedChild() 
