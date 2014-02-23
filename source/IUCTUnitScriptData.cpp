@@ -1,3 +1,5 @@
+#pragma once
+
 #include "UnitScriptData.h"
 
 using namespace SparCraft;

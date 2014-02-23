@@ -68,8 +68,8 @@ void IUCTSearch::doSearch(GameState & initialState, std::vector<UnitAction> & mo
 	// Convert scripts to moves
 	GameState copy(initialState);
 	MoveArray moves;
-	copy.generateMoves(moves, &_params.maxPlayer);
-	scriptData.calculateMoves(&_params.maxChildren, moves, copy, move);
+	copy.generateMoves(moves, _params.maxPlayer());
+	scriptData.calculateMoves(_params.maxChildren(), moves, copy, move);
 
     if (_params.graphVizFilename().length() > 0)
     {
@@ -248,7 +248,7 @@ std::vector<UnitAction> IUCTSearch::scriptsToMove(GameState state, std::vector<U
 
 	GameState copy(state);
 	UnitScriptData scriptData;
-	scriptData.calculateMoves(&_params.maxChildren, node.getMoveArray(), copy, moveVec);
+	scriptData.calculateMoves(_params.maxChildren(), node.getMoveArray(), copy, moveVec);
 
 }
 	
@@ -324,13 +324,14 @@ void IUCTSearch::generateChildren(IUCTNode & node, GameState & state)
 	// Add all NOKDPS script vector
 	UnitScriptData nokdpsScriptData;
 	setAllScripts(playerToMove, state, nokdpsScriptData, PlayerModels::NOKDPS);
-	IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), nokdpsScriptData, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
-	
+	//IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), nokdpsScriptData, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
+
+	node.addChild(&node,playerToMove,getChildNodeType(node,state),nokdpsScriptData,_params.maxChildren(), _memoryPool ? _memoryPool->alloc(): NULL);
 	// Add all KITER-NOKDPS script vector
 	UnitScriptData kiterScriptData;
 	setAllScripts(playerToMove, state, kiterScriptData, PlayerModels::Kiter_NOKDPS);
-	IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), kiterScriptData, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
-
+	//IUCTNode child = IUCTNode(&node, playerToMove, getChildNodeType(node, state), kiterScriptData, _params.maxChildren, _memoryPool ? _memoryPool->alloc() : NULL);
+	node.addChild(&node, playerToMove, getChildNodeType(node, state), kiterScriptData, _params.maxChildren(), _memoryPool ? _memoryPool->alloc() : NULL);
     // Add random script vectors
     for (size_t child(0); (child < _params.maxChildren() -2); ++child)
     {

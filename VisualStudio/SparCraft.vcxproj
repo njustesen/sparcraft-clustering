@@ -170,6 +170,8 @@
     <ClInclude Include="..\source\UnitAction.hpp" />
     <ClInclude Include="..\source\UnitProperties.h" />
     <ClInclude Include="..\source\UnitScriptData.h" />
+    <ClInclude Include="..\source\UPCluster.h" />
+    <ClInclude Include="..\source\UPGMA.h" />
     <ClInclude Include="..\source\WeaponProperties.h" />
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +211,7 @@
     <ClCompile Include="..\source\Unit.cpp" />
     <ClCompile Include="..\source\UnitProperties.cpp" />
     <ClCompile Include="..\source\UnitScriptData.cpp" />
+    <ClCompile Include="..\source\UPGMA.cpp" />
     <ClCompile Include="..\source\WeaponProperties.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

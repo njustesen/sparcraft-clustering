@@ -1,45 +1,62 @@
-﻿Build started 2/21/2014 14:09:47.
-     1>Project "C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2014.02.23. 16:44:17.
+     1>Project "c:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Niels\Documents\sparcraft\boost_1_55_0 /IC:\Users\Niels\Documents\sparcraft\bwapidata /IC:\Users\Niels\Documents\sparcraft\bwapidata\include /I"C:\Users\Niels\Documents\sparcraft\SDL-1.2.15\include" /IC:\Users\Niels\Documents\sparcraft\SDL_image /I"C:\Users\Niels\Documents\sparcraft\SDL_gfx-2.0.25" /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\IUCTSearch.cpp ..\source\IUCTUnitScriptData.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_IUCT.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\UCTSearch.cpp ..\source\UnitScriptData.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Ic:\libraries\boost_1_55_0 /Ic:\libraries\bwapidata /Ic:\libraries\bwapidata\include /I"c:\libraries\SDL-1.2.15\include" /Ic:\libraries\SDL_image /I"c:\libraries\SDL_gfx-2.0.25" /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\glfont\glfont.cc ..\source\Hash.cpp ..\source\IUCTSearch.cpp ..\source\IUCTUnitScriptData.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_IUCT.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\UPGMA.cpp ..\source\WeaponProperties.cpp
          AllPlayers.cpp
          AlphaBetaSearch.cpp
+         AnimationFrameData.cpp
+         Common.cpp
+         Display.cpp
+         EnumData.cpp
          Game.cpp
          GameState.cpp
+         glfont.cc
+         Hash.cpp
          IUCTSearch.cpp
-     1>..\source\IUCTSearch.cpp(35): error C2582: 'operator =' function is unavailable in 'SparCraft::IUCTNode'
-     1>..\source\IUCTSearch.cpp(71): error C2276: '&' : illegal operation on bound member function expression
-     1>..\source\IUCTSearch.cpp(72): error C2276: '&' : illegal operation on bound member function expression
-     1>..\source\IUCTSearch.cpp(251): error C2276: '&' : illegal operation on bound member function expression
-     1>..\source\IUCTSearch.cpp(327): error C3867: 'SparCraft::IUCTSearchParameters::maxChildren': function call missing argument list; use '&SparCraft::IUCTSearchParameters::maxChildren' to create a pointer to member
-     1>..\source\IUCTSearch.cpp(332): error C2374: 'child' : redefinition; multiple initialization
-                 ..\source\IUCTSearch.cpp(327) : see declaration of 'child'
-     1>..\source\IUCTSearch.cpp(332): error C3867: 'SparCraft::IUCTSearchParameters::maxChildren': function call missing argument list; use '&SparCraft::IUCTSearchParameters::maxChildren' to create a pointer to member
          IUCTUnitScriptData.cpp
-     1>c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(22): error C2079: 'SparCraft::IUCTNode::_scriptData' uses undefined class 'SparCraft::UnitScriptData'
-     1>c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(52): error C2440: 'initializing' : cannot convert from 'const SparCraft::UnitScriptData' to 'int'
+     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(22): error C2079: 'SparCraft::IUCTNode::_scriptData' uses undefined class 'SparCraft::UnitScriptData'
+     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(52): error C2440: 'initializing' : cannot convert from 'SparCraft::UnitScriptData' to 'int'
                  Source or target has incomplete type
-     1>c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(52): error C2439: 'SparCraft::IUCTNode::_scriptData' : member could not be initialized
-                 c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(22) : see declaration of 'SparCraft::IUCTNode::_scriptData'
-     1>c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(65): error C2027: use of undefined type 'SparCraft::UnitScriptData'
-                 c:\users\niels\documents\sparcraft-clustering\source\Game.h(21) : see declaration of 'SparCraft::UnitScriptData'
+     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(52): error C2439: 'SparCraft::IUCTNode::_scriptData' : member could not be initialized
+                 c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(22) : see declaration of 'SparCraft::IUCTNode::_scriptData'
+     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(65): error C2027: use of undefined type 'SparCraft::UnitScriptData'
+                 c:\users\tbalint\documents\github\sparcraft-clustering\source\Game.h(21) : see declaration of 'SparCraft::UnitScriptData'
+         MoveArray.cpp
+         Player.cpp
+         PlayerProperties.cpp
          Player_AlphaBeta.cpp
+         Player_AttackClosest.cpp
+         Player_AttackDPS.cpp
+         Player_AttackWeakest.cpp
+         Player_Cluster.cpp
+         Compiling...
          Player_IUCT.cpp
+         Player_Kiter.cpp
+         Player_KiterDPS.cpp
+         Player_Kiter_NOKDPS.cpp
+         Player_NOKDPS.cpp
          Player_PortfolioGreedySearch.cpp
+         Player_Random.cpp
          Player_UCT.cpp
          PortfolioGreedySearch.cpp
          SparCraft.cpp
+         Timer.cpp
+         TranspositionTable.cpp
          UCTSearch.cpp
+         Unit.cpp
+         UnitProperties.cpp
          UnitScriptData.cpp
-     1>c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(22): error C2079: 'SparCraft::IUCTNode::_scriptData' uses undefined class 'SparCraft::UnitScriptData'
-     1>c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(52): error C2440: 'initializing' : cannot convert from 'const SparCraft::UnitScriptData' to 'int'
+     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(22): error C2079: 'SparCraft::IUCTNode::_scriptData' uses undefined class 'SparCraft::UnitScriptData'
+     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(52): error C2440: 'initializing' : cannot convert from 'SparCraft::UnitScriptData' to 'int'
                  Source or target has incomplete type
-     1>c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(52): error C2439: 'SparCraft::IUCTNode::_scriptData' : member could not be initialized
-                 c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(22) : see declaration of 'SparCraft::IUCTNode::_scriptData'
-     1>c:\users\niels\documents\sparcraft-clustering\source\IUCTNode.h(65): error C2027: use of undefined type 'SparCraft::UnitScriptData'
-                 c:\users\niels\documents\sparcraft-clustering\source\Game.h(21) : see declaration of 'SparCraft::UnitScriptData'
-     1>Done Building Project "C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" (Build target(s)) -- FAILED.
+     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(52): error C2439: 'SparCraft::IUCTNode::_scriptData' : member could not be initialized
+                 c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(22) : see declaration of 'SparCraft::IUCTNode::_scriptData'
+     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(65): error C2027: use of undefined type 'SparCraft::UnitScriptData'
+                 c:\users\tbalint\documents\github\sparcraft-clustering\source\Game.h(21) : see declaration of 'SparCraft::UnitScriptData'
+         UPGMA.cpp
+         WeaponProperties.cpp
+     1>Done Building Project "c:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" (Rebuild target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:46.88
+Time Elapsed 00:03:41.83

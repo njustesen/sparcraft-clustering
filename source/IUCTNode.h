@@ -7,7 +7,7 @@
 
 namespace SparCraft
 {
-
+class UnitScriptData;
 
 class IUCTNode
 {
@@ -19,7 +19,7 @@ class IUCTNode
     // game specific variables
     size_t                      _player;            // the player who made a move to generate this node
     IDType                      _nodeType;
-	const UnitScriptData				_scriptData;
+	UnitScriptData				_scriptData;
 	MoveArray					_moveArray;
 
     // holds children
@@ -41,7 +41,7 @@ public:
 
     }
 
-	IUCTNode (IUCTNode * parent, const IDType player, const IDType nodeType, const UnitScriptData & scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
+	IUCTNode (IUCTNode * parent, const IDType player, const IDType nodeType, UnitScriptData & scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
         : _numVisits            (0)
         , _numWins              (0)
         , _uctVal               (0)
@@ -62,7 +62,7 @@ public:
     const IDType    getPlayer()                 const           { return _player; }
 	
 	MoveArray getMoveArray()					const           { return _moveArray; }
-	const UnitScriptData getScriptData()		const			{ return _scriptData; }
+	UnitScriptData getScriptData()		const			{ return _scriptData; }
 
     IUCTNode *       getParent()                 const           { return _parent; }
     IUCTNode &       getChild(const size_t & c)                  { return _children[c]; }
@@ -77,7 +77,7 @@ public:
 		_moveArray = moveArray;
 	}
 
-    void addChild(IUCTNode * parent, const IDType player, const IDType nodeType, const UnitScriptData & scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
+    void addChild(IUCTNode * parent, const IDType player, const IDType nodeType, UnitScriptData & scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
     {
         _children.push_back(IUCTNode(parent, player, nodeType, scriptData, maxChildren));
     }
