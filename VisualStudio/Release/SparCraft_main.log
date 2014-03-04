@@ -1,17 +1,17 @@
-﻿Build started 2014.02.23. 16:47:59.
-     1>Project "c:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\SparCraft_main.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 2/24/2014 16:33:38.
+     1>Project "C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\SparCraft_main.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Ic:\libraries\boost_1_55_0 /Ic:\libraries\bwapidata /Ic:\libraries\bwapidata\include /I"c:\libraries\SDL-1.2.15\include" /Ic:\libraries\SDL_image /I"c:\libraries\SDL_gfx-2.0.25" /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\main.cpp ..\source\SearchExperiment.cpp ..\source\TutorialCode.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Niels\Documents\sparcraft\boost_1_55_0 /IC:\Users\Niels\Documents\sparcraft\bwapidata /IC:\Users\Niels\Documents\sparcraft\bwapidata\include /I"C:\Users\Niels\Documents\sparcraft\SDL-1.2.15\include" /IC:\Users\Niels\Documents\sparcraft\SDL_image /I"C:\Users\Niels\Documents\sparcraft\SDL_gfx-2.0.25" /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\main.cpp ..\source\SearchExperiment.cpp ..\source\TutorialCode.cpp
          main.cpp
          SearchExperiment.cpp
          TutorialCode.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\Release\SparCraft.exe" /INCREMENTAL:NO /NOLOGO Release/SparCraft.lib c:\libraries\bwapidata/lib/BWAPI.lib c:\libraries\external_binaries\lib/SDL.lib c:\libraries\external_binaries\lib/SDLmain.lib c:\libraries\external_binaries\lib/opengl32.lib c:\libraries\external_binaries\lib/SDL_image.lib c:\libraries\external_binaries\lib/SDL_gfx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\Release\SparCraft.pdb" /MAP /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\Release\SparCraft.lib" /MACHINE:X86 /PROFILE /SAFESEH Release\main.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\Release\SparCraft.exe" /INCREMENTAL:NO /NOLOGO Release/SparCraft.lib C:\Users\Niels\Documents\sparcraft\bwapidata/lib/BWAPI.lib C:\Users\Niels\Documents\sparcraft\external_binaries\lib/SDL.lib C:\Users\Niels\Documents\sparcraft\external_binaries\lib/SDLmain.lib C:\Users\Niels\Documents\sparcraft\external_binaries\lib/opengl32.lib C:\Users\Niels\Documents\sparcraft\external_binaries\lib/SDL_image.lib C:\Users\Niels\Documents\sparcraft\external_binaries\lib/SDL_gfx.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\Release\SparCraft.pdb" /MAP /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\Release\SparCraft.lib" /MACHINE:X86 /PROFILE /SAFESEH Release\main.obj
          Release\SearchExperiment.obj
          Release\TutorialCode.obj
      1>LINK : fatal error LNK1181: cannot open input file 'Release/SparCraft.lib'
-     1>Done Building Project "c:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\SparCraft_main.vcxproj" (Rebuild target(s)) -- FAILED.
+     1>Done Building Project "C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\SparCraft_main.vcxproj" (Rebuild target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:31.43
+Time Elapsed 00:00:08.74

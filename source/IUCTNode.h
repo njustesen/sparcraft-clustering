@@ -7,7 +7,6 @@
 
 namespace SparCraft
 {
-class UnitScriptData;
 
 class IUCTNode
 {
@@ -19,8 +18,8 @@ class IUCTNode
     // game specific variables
     size_t                      _player;            // the player who made a move to generate this node
     IDType                      _nodeType;
-	UnitScriptData				_scriptData;
-	MoveArray					_moveArray;
+	UnitScriptData *			_scriptData;
+	MoveArray *					_moveArray;
 
     // holds children
     std::vector<IUCTNode>       _children;
@@ -41,14 +40,14 @@ public:
 
     }
 
-	IUCTNode (IUCTNode * parent, const IDType player, const IDType nodeType, UnitScriptData & scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
+	IUCTNode (IUCTNode * parent, const IDType player, const IDType nodeType, UnitScriptData * scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
         : _numVisits            (0)
         , _numWins              (0)
         , _uctVal               (0)
         , _player               (player)
         , _nodeType             (nodeType)
-        , _scriptData           (scriptData)
         , _parent               (parent)
+        , _scriptData           (scriptData)
     {
         _children.reserve(maxChildren);
     }
@@ -61,8 +60,8 @@ public:
     const size_t    getNodeType()               const           { return _nodeType; }
     const IDType    getPlayer()                 const           { return _player; }
 	
-	MoveArray getMoveArray()					const           { return _moveArray; }
-	UnitScriptData getScriptData()		const			{ return _scriptData; }
+	MoveArray * getMoveArray()					const           { return _moveArray; }
+	UnitScriptData * getScriptData()			const			{ return _scriptData; }
 
     IUCTNode *       getParent()                 const           { return _parent; }
     IUCTNode &       getChild(const size_t & c)                  { return _children[c]; }
@@ -73,11 +72,11 @@ public:
 
     std::vector<IUCTNode> & getChildren()                        { return _children; }
 
-	void setMoveArray(MoveArray moveArray){
+	void setMoveArray(MoveArray * moveArray){
 		_moveArray = moveArray;
 	}
 
-    void addChild(IUCTNode * parent, const IDType player, const IDType nodeType, UnitScriptData & scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
+    void addChild(IUCTNode * parent, const IDType player, const IDType nodeType, UnitScriptData * scriptData, const size_t & maxChildren, std::vector<IUCTNode> * fromPool = NULL)
     {
         _children.push_back(IUCTNode(parent, player, nodeType, scriptData, maxChildren));
     }

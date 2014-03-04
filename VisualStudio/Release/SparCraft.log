@@ -1,7 +1,7 @@
-﻿Build started 2014.02.23. 16:44:17.
-     1>Project "c:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 2/24/2014 16:32:30.
+     1>Project "C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Ic:\libraries\boost_1_55_0 /Ic:\libraries\bwapidata /Ic:\libraries\bwapidata\include /I"c:\libraries\SDL-1.2.15\include" /Ic:\libraries\SDL_image /I"c:\libraries\SDL_gfx-2.0.25" /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\glfont\glfont.cc ..\source\Hash.cpp ..\source\IUCTSearch.cpp ..\source\IUCTUnitScriptData.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_IUCT.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\UPGMA.cpp ..\source\WeaponProperties.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Niels\Documents\sparcraft\boost_1_55_0 /IC:\Users\Niels\Documents\sparcraft\bwapidata /IC:\Users\Niels\Documents\sparcraft\bwapidata\include /I"C:\Users\Niels\Documents\sparcraft\SDL-1.2.15\include" /IC:\Users\Niels\Documents\sparcraft\SDL_image /I"C:\Users\Niels\Documents\sparcraft\SDL_gfx-2.0.25" /Zi /nologo /W3 /WX- /Ox /Oi /Ot /Oy /GT /GL /D WIN32 /D NDEBUG /D _CONSOLE /D NOMINMAX /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt ..\source\AllPlayers.cpp ..\source\AlphaBetaSearch.cpp ..\source\AnimationFrameData.cpp ..\source\Common.cpp ..\source\Display.cpp ..\source\EnumData.cpp ..\source\Game.cpp ..\source\GameState.cpp ..\source\glfont\glfont.cc ..\source\Hash.cpp ..\source\IUCTSearch.cpp ..\source\IUCTUnitScriptData.cpp ..\source\MoveArray.cpp ..\source\Player.cpp ..\source\PlayerProperties.cpp ..\source\Player_AlphaBeta.cpp ..\source\Player_AttackClosest.cpp ..\source\Player_AttackDPS.cpp ..\source\Player_AttackWeakest.cpp ..\source\Player_Cluster.cpp ..\source\Player_IUCT.cpp ..\source\Player_Kiter.cpp ..\source\Player_KiterDPS.cpp ..\source\Player_Kiter_NOKDPS.cpp ..\source\Player_NOKDPS.cpp ..\source\Player_PortfolioGreedySearch.cpp ..\source\Player_Random.cpp ..\source\Player_UCT.cpp ..\source\PortfolioGreedySearch.cpp ..\source\SparCraft.cpp ..\source\Timer.cpp ..\source\TranspositionTable.cpp ..\source\UCTSearch.cpp ..\source\Unit.cpp ..\source\UnitProperties.cpp ..\source\UnitScriptData.cpp ..\source\UPGMA.cpp ..\source\WeaponProperties.cpp
          AllPlayers.cpp
          AlphaBetaSearch.cpp
          AnimationFrameData.cpp
@@ -14,13 +14,6 @@
          Hash.cpp
          IUCTSearch.cpp
          IUCTUnitScriptData.cpp
-     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(22): error C2079: 'SparCraft::IUCTNode::_scriptData' uses undefined class 'SparCraft::UnitScriptData'
-     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(52): error C2440: 'initializing' : cannot convert from 'SparCraft::UnitScriptData' to 'int'
-                 Source or target has incomplete type
-     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(52): error C2439: 'SparCraft::IUCTNode::_scriptData' : member could not be initialized
-                 c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(22) : see declaration of 'SparCraft::IUCTNode::_scriptData'
-     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(65): error C2027: use of undefined type 'SparCraft::UnitScriptData'
-                 c:\users\tbalint\documents\github\sparcraft-clustering\source\Game.h(21) : see declaration of 'SparCraft::UnitScriptData'
          MoveArray.cpp
          Player.cpp
          PlayerProperties.cpp
@@ -46,17 +39,62 @@
          Unit.cpp
          UnitProperties.cpp
          UnitScriptData.cpp
-     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(22): error C2079: 'SparCraft::IUCTNode::_scriptData' uses undefined class 'SparCraft::UnitScriptData'
-     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(52): error C2440: 'initializing' : cannot convert from 'SparCraft::UnitScriptData' to 'int'
-                 Source or target has incomplete type
-     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(52): error C2439: 'SparCraft::IUCTNode::_scriptData' : member could not be initialized
-                 c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(22) : see declaration of 'SparCraft::IUCTNode::_scriptData'
-     1>c:\users\tbalint\documents\github\sparcraft-clustering\source\IUCTNode.h(65): error C2027: use of undefined type 'SparCraft::UnitScriptData'
-                 c:\users\tbalint\documents\github\sparcraft-clustering\source\Game.h(21) : see declaration of 'SparCraft::UnitScriptData'
          UPGMA.cpp
          WeaponProperties.cpp
-     1>Done Building Project "c:\Users\tbalint\Documents\GitHub\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" (Rebuild target(s)) -- FAILED.
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\Lib.exe /OUT:"C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\Release\SparCraft.lib" /NOLOGO /LTCG Release\AllPlayers.obj
+         Release\AlphaBetaSearch.obj
+         Release\AnimationFrameData.obj
+         Release\Common.obj
+         Release\Display.obj
+         Release\EnumData.obj
+         Release\Game.obj
+         Release\GameState.obj
+         Release\glfont.obj
+         Release\Hash.obj
+         Release\IUCTSearch.obj
+         Release\IUCTUnitScriptData.obj
+         Release\MoveArray.obj
+         Release\Player.obj
+         Release\PlayerProperties.obj
+         Release\Player_AlphaBeta.obj
+         Release\Player_AttackClosest.obj
+         Release\Player_AttackDPS.obj
+         Release\Player_AttackWeakest.obj
+         Release\Player_Cluster.obj
+         Release\Player_IUCT.obj
+         Release\Player_Kiter.obj
+         Release\Player_KiterDPS.obj
+         Release\Player_Kiter_NOKDPS.obj
+         Release\Player_NOKDPS.obj
+         Release\Player_PortfolioGreedySearch.obj
+         Release\Player_Random.obj
+         Release\Player_UCT.obj
+         Release\PortfolioGreedySearch.obj
+         Release\SparCraft.obj
+         Release\Timer.obj
+         Release\TranspositionTable.obj
+         Release\UCTSearch.obj
+         Release\Unit.obj
+         Release\UnitProperties.obj
+         Release\UnitScriptData.obj
+         Release\UPGMA.obj
+         Release\WeaponProperties.obj
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: void __thiscall SparCraft::UnitScriptData::setUnitScript(class SparCraft::Unit const &,unsigned char const &)" (?setUnitScript@UnitScriptData@SparCraft@@QAEXABVUnit@2@ABE@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: void __thiscall SparCraft::UnitScriptData::setUnitScript(unsigned char const &,int const &,unsigned char const &)" (?setUnitScript@UnitScriptData@SparCraft@@QAEXABEABH0@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: unsigned int const __thiscall SparCraft::UnitScriptData::getNumScripts(unsigned char const &)const " (?getNumScripts@UnitScriptData@SparCraft@@QBE?BIABE@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: class boost::shared_ptr<class SparCraft::Player> const & __thiscall SparCraft::UnitScriptData::getPlayerPtr(unsigned char const &,unsigned int const &)" (?getPlayerPtr@UnitScriptData@SparCraft@@QAEABV?$shared_ptr@VPlayer@SparCraft@@@boost@@ABEABI@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: unsigned char const & __thiscall SparCraft::UnitScriptData::getScript(unsigned char const &,unsigned int const &)" (?getScript@UnitScriptData@SparCraft@@QAEABEABEABI@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: unsigned char const & __thiscall SparCraft::UnitScriptData::getUnitScript(class SparCraft::Unit const &)const " (?getUnitScript@UnitScriptData@SparCraft@@QBEABEABVUnit@2@@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: unsigned char const & __thiscall SparCraft::UnitScriptData::getUnitScript(unsigned char const &,int const &)const " (?getUnitScript@UnitScriptData@SparCraft@@QBEABEABEABH@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: void __thiscall SparCraft::UnitScriptData::calculateMoves(unsigned char const &,class SparCraft::MoveArray &,class SparCraft::GameState &,class std::vector<class SparCraft::UnitAction,class std::allocator<class SparCraft::UnitAction> > &)" (?calculateMoves@UnitScriptData@SparCraft@@QAEXABEAAVMoveArray@2@AAVGameState@2@AAV?$vector@VUnitAction@SparCraft@@V?$allocator@VUnitAction@SparCraft@@@std@@@std@@@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "private: class SparCraft::UnitAction & __thiscall SparCraft::UnitScriptData::getMove(unsigned char const &,unsigned char const &,unsigned char const &)" (?getMove@UnitScriptData@SparCraft@@AAEAAVUnitAction@2@ABE00@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "private: class std::vector<class SparCraft::UnitAction,class std::allocator<class SparCraft::UnitAction> > & __thiscall SparCraft::UnitScriptData::getMoves(unsigned char const &,unsigned char const &)" (?getMoves@UnitScriptData@SparCraft@@AAEAAV?$vector@VUnitAction@SparCraft@@V?$allocator@VUnitAction@SparCraft@@@std@@@std@@ABE0@Z) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTUnitScriptData.obj : warning LNK4006: "public: __thiscall SparCraft::UnitScriptData::UnitScriptData(void)" (??0UnitScriptData@SparCraft@@QAE@XZ) already defined in UnitScriptData.obj; second definition ignored
+     1>IUCTSearch.obj : warning LNK4006: "protected: void __thiscall SparCraft::PortfolioGreedySearch::setAllScripts(unsigned char const &,class SparCraft::GameState const &,class SparCraft::UnitScriptData &,unsigned char const &)" (?setAllScripts@PortfolioGreedySearch@SparCraft@@IAEXABEABVGameState@2@AAVUnitScriptData@2@0@Z) already defined in PortfolioGreedySearch.obj; second definition ignored
+         SparCraft.vcxproj -> C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\Release\SparCraft.lib
+     1>Done Building Project "C:\Users\Niels\Documents\sparcraft-clustering\VisualStudio\SparCraft.vcxproj" (Rebuild target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:03:41.83
+Time Elapsed 00:01:08.10
